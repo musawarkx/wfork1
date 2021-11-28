@@ -133,10 +133,7 @@ function NavContent() {
                 <Link href="https://wonderland.gitbook.io/wonderland/" target="_blank">
                     <img alt="" src={DocsIcon} />
                     <p>Docs</p>
-                </Link>
-                <Link href="https://legacy.wonderland.money/" target="_blank">
-                    <p>Legacy website</p>
-                </Link>
+               
             </div>
             <Social />
         </div>
