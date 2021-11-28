@@ -317,7 +317,7 @@ const teddy: IToken = {
 
 const time: IToken = {
     name: "TIME",
-    address: "0xb54f16fB19478766A268F172C9480f8da1a7c9C3",
+    address: "0x24b6179e4062ed9baeace0e6081dbd55b6072380",
     img: TimeIcon,
     decimals: 9,
 };
