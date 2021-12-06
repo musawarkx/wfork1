@@ -11,6 +11,7 @@ function ConnectMenu() {
     const { connect, disconnect, connected, web3, providerChainID, checkWrongNetwork } = useWeb3Context();
     const dispatch = useDispatch();
     const [isConnected, setConnected] = useState(connected);
+    const getAddresses = (networkID: number);
 
     let pendingTransactions = useSelector<IReduxState, IPendingTxn[]>(state => {
         return state.pendingTransactions;
@@ -30,7 +31,7 @@ function ConnectMenu() {
         clickFunc = () => {};
     }
 
-    if (isConnected == true && providerChainID !== DEFAULD_NETWORK) {
+    if (isConnected && NetworkID !== DEFAULD_NETWORK) {
         buttonText = "Wrong network";
         buttonStyle = { backgroundColor: "rgb(255, 67, 67)" };
         clickFunc = () => {
