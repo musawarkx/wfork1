@@ -30,7 +30,7 @@ function ConnectMenu() {
         clickFunc = () => {};
     }
 
-    if (isConnected == true && providerChainID !++ DEFAULD_NETWORK) {
+    if (isConnected == true && providerChainID !== DEFAULD_NETWORK) {
         buttonText = "Wrong network";
         buttonStyle = { backgroundColor: "rgb(255, 67, 67)" };
         clickFunc = () => {
