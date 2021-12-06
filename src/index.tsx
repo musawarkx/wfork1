@@ -22,5 +22,5 @@ ReactDOM.render(
             </Web3ContextProvider>
         </Provider>
     </SnackbarProvider>,
-    document.getElementById("root"),
+    document.getElementById("root"), 
 );
