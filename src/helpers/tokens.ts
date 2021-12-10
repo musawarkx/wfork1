@@ -212,7 +212,7 @@ const mai: IToken = {
 
 export const mim: IToken = {
     name: "MIM",
-    address: "0xc27255d7805fc79e4616d5cd50d6f4464aea75a3",
+    address: "0xcF664087a5bB0237a0BAd6742852ec6c8d69A27a",
     img: MimIcon,
     decimals: 18,
 };
@@ -317,7 +317,7 @@ const teddy: IToken = {
 
 const time: IToken = {
     name: "TIME",
-    address: "0x24b6179e4062ed9baeace0e6081dbd55b6072380",
+    address: "0x6eE39e63f9C4e6AeCC76C74745D152464caA2a77",
     img: TimeIcon,
     decimals: 9,
 };
