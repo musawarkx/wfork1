@@ -21,7 +21,7 @@ interface IAccountBalances {
     balances: {
         memo: string;
         time: string;
-        wmemo: string;
+       // wmemo: string;
     };
 }
 
@@ -32,14 +32,14 @@ export const getBalances = createAsyncThunk("account/getBalances", async ({ addr
     const memoBalance = await memoContract.balanceOf(address);
     const timeContract = new ethers.Contract(addresses.TIME_ADDRESS, TimeTokenContract, provider);
     const timeBalance = await timeContract.balanceOf(address);
-    const wmemoContract = new ethers.Contract(addresses.WMEMO_ADDRESS, wMemoTokenContract, provider);
-    const wmemoBalance = await wmemoContract.balanceOf(address);
+    //const wmemoContract = new ethers.Contract(addresses.WMEMO_ADDRESS, wMemoTokenContract, provider);
+    //const wmemoBalance = await wmemoContract.balanceOf(address);
 
     return {
         balances: {
             memo: ethers.utils.formatUnits(memoBalance, "gwei"),
             time: ethers.utils.formatUnits(timeBalance, "gwei"),
-            wmemo: ethers.utils.formatEther(wmemoBalance),
+            //wmemo: ethers.utils.formatEther(wmemoBalance),
         },
     };
 });
@@ -54,23 +54,23 @@ interface IUserAccountDetails {
     balances: {
         time: string;
         memo: string;
-        wmemo: string;
+        //wmemo: string;
     };
     staking: {
         time: number;
         memo: number;
     };
-    wrapping: {
-        memo: number;
-    };
+    //wrapping: {
+        //memo: number;
+    //};
 }
 
 export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails", async ({ networkID, provider, address }: ILoadAccountDetails): Promise<IUserAccountDetails> => {
     let timeBalance = 0;
     let memoBalance = 0;
 
-    let wmemoBalance = 0;
-    let memoWmemoAllowance = 0;
+    //let wmemoBalance = 0;
+    //let memoWmemoAllowance = 0;
 
     let stakeAllowance = 0;
     let unstakeAllowance = 0;
@@ -88,29 +88,29 @@ export const loadAccountDetails = createAsyncThunk("account/loadAccountDetails",
         memoBalance = await memoContract.balanceOf(address);
         unstakeAllowance = await memoContract.allowance(address, addresses.STAKING_ADDRESS);
 
-        if (addresses.WMEMO_ADDRESS) {
-            memoWmemoAllowance = await memoContract.allowance(address, addresses.WMEMO_ADDRESS);
-        }
+        //if (addresses.WMEMO_ADDRESS) {
+           // memoWmemoAllowance = await memoContract.allowance(address, addresses.WMEMO_ADDRESS);
+        //}
     }
 
-    if (addresses.WMEMO_ADDRESS) {
-        const wmemoContract = new ethers.Contract(addresses.WMEMO_ADDRESS, wMemoTokenContract, provider);
-        wmemoBalance = await wmemoContract.balanceOf(address);
-    }
+    //if (addresses.WMEMO_ADDRESS) {
+        //const wmemoContract = new ethers.Contract(addresses.WMEMO_ADDRESS, wMemoTokenContract, provider);
+        //wmemoBalance = await wmemoContract.balanceOf(address);
+    //}
 
     return {
         balances: {
             memo: ethers.utils.formatUnits(memoBalance, "gwei"),
             time: ethers.utils.formatUnits(timeBalance, "gwei"),
-            wmemo: ethers.utils.formatEther(wmemoBalance),
+            //wmemo: ethers.utils.formatEther(wmemoBalance),
         },
         staking: {
             time: Number(stakeAllowance),
             memo: Number(unstakeAllowance),
         },
-        wrapping: {
-            memo: Number(memoWmemoAllowance),
-        },
+        //wrapping: {
+            //memo: Number(memoWmemoAllowance),
+       // },
     };
 });
 
@@ -248,25 +248,25 @@ export interface IAccountSlice {
     balances: {
         memo: string;
         time: string;
-        wmemo: string;
+        //wmemo: string;
     };
     loading: boolean;
     staking: {
         time: number;
         memo: number;
     };
-    wrapping: {
-        memo: number;
-    };
+    //wrapping: {
+        //memo: number;
+    //};
     tokens: { [key: string]: IUserTokenDetails };
 }
 
 const initialState: IAccountSlice = {
     loading: true,
     bonds: {},
-    balances: { memo: "", time: "", wmemo: "" },
+    balances: { memo: "", time: "" },
     staking: { time: 0, memo: 0 },
-    wrapping: { memo: 0 },
+   // wrapping: { memo: 0 },
     tokens: {},
 };
 
